@@ -2,7 +2,7 @@ namespace portfolio.Seed;
 
 public class ProjectTestData
 {
-    public static ProjectObject[] GetProjectData()
+    public static ProjectObject[] GetProjectTestData()
     {
         return new ProjectObject[]
         {

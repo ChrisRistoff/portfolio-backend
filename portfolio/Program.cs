@@ -35,6 +35,7 @@ if (env == "Development" || env == "Production")
     connectionStringName = "DefaultConnection";
 }
 
+
 Console.WriteLine($"Environment: {env}");
 Console.WriteLine($"Connection String: {connectionStringName}");
 
@@ -46,12 +47,14 @@ builder.Services
         .ScanIn(typeof(Program).Assembly).For.Migrations())
     .AddLogging(lb => lb.AddFluentMigratorConsole());
 
-async Task Migrate(IServiceProvider serviceProvider)
+Task Migrate(IServiceProvider serviceProvider)
 {
     using var scope = serviceProvider.CreateScope();
     var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
     runner.MigrateDown(0);
     runner.MigrateUp();
+
+    return Task.CompletedTask;
 }
 
 // register repositories
@@ -66,19 +69,17 @@ var app = builder.Build();
 if (env == "Testing")
 {
     await Migrate(app.Services);
-    // SEED TEST DATABASE
+    await SeedTest.Seed(builder.Configuration.GetConnectionString(connectionStringName)!);
 }
 
 if (env == "Development" || env == "Production")
 {
 
     await Migrate(app.Services);
-    await SeedProd.Seed(app.Configuration.GetConnectionString(connectionStringName));
+    await SeedProd.Seed(builder.Configuration.GetConnectionString(connectionStringName)!);
 
     app.UseSwagger();
     app.UseSwaggerUI();
-
-    app.MapGet("/", () => "Hello World!");
 }
 
 app.UseCors("AllowAll");
@@ -87,3 +88,5 @@ app.UseRouting();
 app.UseHttpsRedirection();
 app.MapControllers();
 app.Run();
+
+public partial class Program {}

@@ -12,16 +12,16 @@ public class PersonalInfoRepository
     public PersonalInfoRepository(IConfiguration config)
     {
         _config = config;
-        string env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+        string env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
 
-        if (env == "Development")
+        if (env == "Development" || env == "Production")
         {
             _connectionString = _config.GetConnectionString("DefaultConnection");
         }
 
-        if (env == "Production")
+        if (env == "Testing")
         {
-            _connectionString = _config.GetConnectionString("DefaultConnection");
+            _connectionString = _config.GetConnectionString("TestConnection");
         }
     }
 
@@ -35,6 +35,6 @@ public class PersonalInfoRepository
         ";
 
         var result = await connection.QueryAsync<PersonalInfoModel>(sql);
-        return result.FirstOrDefault();
+        return result.FirstOrDefault()!;
     }
 }
