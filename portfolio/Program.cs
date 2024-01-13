@@ -1,4 +1,5 @@
 using FluentMigrator.Runner;
+using portfolio.Models;
 using portfolio.Repositories;
 using portfolio.Seed;
 
@@ -55,6 +56,9 @@ async Task Migrate(IServiceProvider serviceProvider)
 // register repositories
 builder.Services.AddScoped<PersonalInfoRepository>();
 builder.Services.AddScoped<ProjectInfoRepository>();
+
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.AddTransient<EmailService>();
 
 var app = builder.Build();
 

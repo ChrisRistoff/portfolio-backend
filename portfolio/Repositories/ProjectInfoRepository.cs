@@ -6,21 +6,20 @@ namespace portfolio.Repositories;
 
 public class ProjectInfoRepository
 {
-    private readonly IConfiguration _config;
     private readonly string? _connectionString;
 
     public ProjectInfoRepository(IConfiguration config)
     {
-        _config = config;
-        string env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+        var config1 = config;
+        string? env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
         if (env == "Testing")
         {
-            _connectionString = _config.GetConnectionString("TestConnection");
+            _connectionString = config1.GetConnectionString("TestConnection");
         }
         else
         {
-            _connectionString = _config.GetConnectionString("DefaultConnection");
+            _connectionString = config1.GetConnectionString("DefaultConnection");
         }
     }
 
@@ -39,6 +38,7 @@ public class ProjectInfoRepository
 
         var results = await connection.QueryAsync<dynamic>(sql, parameters);
         var projects = new List<ProjectInfoModel>();
+
         foreach (var result in results)
         {
             var project = new ProjectInfoModel
