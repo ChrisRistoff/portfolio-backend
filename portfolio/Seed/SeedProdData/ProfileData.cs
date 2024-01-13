@@ -2,6 +2,7 @@ namespace portfolio.Seed;
 
 public class ProfileObject
 {
+    public int Id { get; set; }
     public string Name { get; set; }
     public string Email { get; set; }
     public string Bio { get; set; }
@@ -16,6 +17,7 @@ public class ProfileData
     {
         return new ProfileObject
         {
+            Id = 1,
             Name = "Krasen Hristov",
             Email = "krsnhrstv@gmail.com",
             Bio =

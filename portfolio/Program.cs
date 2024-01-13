@@ -1,12 +1,23 @@
 using FluentMigrator.Runner;
-using Microsoft.AspNetCore.Mvc.Diagnostics;
+using portfolio.Repositories;
+using portfolio.Seed;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin();
+        builder.AllowAnyMethod();
+        builder.AllowAnyHeader();
+    });
+});
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+builder.Services.AddControllers();
 
 string? env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
 
@@ -14,13 +25,16 @@ string connectionStringName = "";
 
 if (env == "Testing")
 {
-    connectionStringName = "Test";
+    connectionStringName = "TestConnection";
 }
 
 if (env == "Development" || env == "Production")
 {
-    connectionStringName = "Default";
+    connectionStringName = "DefaultConnection";
 }
+
+Console.WriteLine($"Environment: {env}");
+Console.WriteLine($"Connection String: {connectionStringName}");
 
 builder.Services
     .AddFluentMigratorCore()
@@ -30,29 +44,41 @@ builder.Services
         .ScanIn(typeof(Program).Assembly).For.Migrations())
     .AddLogging(lb => lb.AddFluentMigratorConsole());
 
-static void Migrate(IServiceProvider serviceProvider)
+async Task Migrate(IServiceProvider serviceProvider)
 {
-    var runner = serviceProvider.GetRequiredService<IMigrationRunner>();
+    using var scope = serviceProvider.CreateScope();
+    var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
     runner.MigrateDown(0);
     runner.MigrateUp();
 }
 
+// register repositories
+builder.Services.AddScoped<PersonalInfoRepository>();
+builder.Services.AddScoped<ProjectInfoRepository>();
+
+var app = builder.Build();
+
 if (env == "Testing")
 {
-    Migrate(app.Services);
+    await Migrate(app.Services);
     // SEED TEST DATABASE
 }
 
 if (env == "Development" || env == "Production")
 {
-    Migrate(app.Services);
+
+    await Migrate(app.Services);
+    await SeedProd.Seed(app.Configuration.GetConnectionString(connectionStringName));
 
     app.UseSwagger();
     app.UseSwaggerUI();
-    // SEED DATABASE
+
+    app.MapGet("/", () => "Hello World!");
 }
 
 app.UseCors("AllowAll");
 
+app.UseRouting();
 app.UseHttpsRedirection();
+app.MapControllers();
 app.Run();

@@ -1,15 +1,14 @@
 using Dapper;
 using Npgsql;
-using portfolio.Models;
 
 namespace portfolio.Repositories;
 
-public class PersonalInfoRepository
+public class ProjectInfoRepository
 {
     private readonly IConfiguration _config;
     private readonly string? _connectionString;
 
-    public PersonalInfoRepository(IConfiguration config)
+    public ProjectInfoRepository(IConfiguration config)
     {
         _config = config;
         string env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
@@ -25,16 +24,25 @@ public class PersonalInfoRepository
         }
     }
 
-    public async Task<PersonalInfoModel> GetPersonalInfo()
+    public async Task<IEnumerable<ProjectInfoRepository>> GetPersonalInfo(string? projectType)
     {
         await using var connection = new NpgsqlConnection(_connectionString);
 
         var sql = @"
             SELECT *
-            FROM personal_info
+            FROM projects
+            WHERE 1 = 1
         ";
 
-        var result = await connection.QueryAsync<PersonalInfoModel>(sql);
-        return result.FirstOrDefault();
+        DynamicParameters parameters = new DynamicParameters();
+
+        if (projectType != null)
+        {
+            sql += "AND type = @ProjectType";
+            parameters.Add("ProjectType", projectType);
+        }
+
+        var result = await connection.QueryAsync<ProjectInfoRepository>(sql);
+        return result;
     }
 }

@@ -2,6 +2,7 @@ namespace portfolio.Seed;
 
 public class ProjectObject
 {
+    public int Id { get; set; }
     public string Name { get; set; }
     public string Tagline { get; set; }
     public string Description { get; set; }
@@ -25,6 +26,7 @@ public class ProjectData
         {
             new ProjectObject
             {
+                Id = 1,
                 Name = "Portfolio",
                 Tagline = "My personal website",
                 Description = "My personal website, built with ASP.NET Core 5.0 and React.",
