@@ -8,9 +8,16 @@ namespace portfolio.Controllers;
 public class ProjectInfoController(ProjectInfoRepository projectInfoRepository) : ControllerBase
 {
     [HttpGet("api/project-info")]
-    public async Task<OkObjectResult> GetPersonalInfo(string? projectType)
+    public async Task<ActionResult<IEnumerable<ProjectInfoModel>>> GetPersonalInfo(string? projectType)
     {
-        var result = await projectInfoRepository.GetProjectInfo(projectType);
-        return Ok(result);
+        try
+        {
+            var result = await projectInfoRepository.GetProjectInfo(projectType);
+            return Ok(result);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
     }
 }
