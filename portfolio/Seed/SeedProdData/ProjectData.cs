@@ -10,12 +10,7 @@ public class ProjectObject
     public string Repo { get; set; }
     public string Link { get; set; }
     public string[] TechStack { get; set; }
-    public enum ProjectType
-    {
-        Backend,
-        Frontend,
-    }
-    public ProjectType Type { get; set; }
+    public string? Type { get; set; }
 }
 
 public class ProjectData
@@ -29,12 +24,12 @@ public class ProjectData
                 Id = 1,
                 Name = "Portfolio",
                 Tagline = "My personal website",
-                Description = "My personal website, built with ASP.NET Core 5.0 and React.",
+                Description = "My personal website, built with ASP.NET Core 8 and C#.",
                 Image = "https://i.imgur.com/6Z2Q9ZM.png",
                 Repo = "www.github.com/krasenHristov/portfolio",
                 Link = "www.krasenhristov.com",
-                TechStack = new string[] { "C#", "ASP.NET Core", "React", "PostgreSQL", "Docker", "Nginx" },
-                Type = ProjectObject.ProjectType.Frontend,
+                TechStack = new string[] { "C#", "ASP.NET Core", "PostgreSQL", "Docker", "Nginx" },
+                Type = "Backend"
             },
         };
     }

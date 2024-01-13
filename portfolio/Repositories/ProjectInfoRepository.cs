@@ -1,5 +1,6 @@
 using Dapper;
 using Npgsql;
+using portfolio.Models;
 
 namespace portfolio.Repositories;
 
@@ -13,18 +14,17 @@ public class ProjectInfoRepository
         _config = config;
         string env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
-        if (env == "Development")
+        if (env == "Testing")
         {
-            _connectionString = _config.GetConnectionString("DefaultConnection");
+            _connectionString = _config.GetConnectionString("TestConnection");
         }
-
-        if (env == "Production")
+        else
         {
             _connectionString = _config.GetConnectionString("DefaultConnection");
         }
     }
 
-    public async Task<IEnumerable<ProjectInfoRepository>> GetPersonalInfo(string? projectType)
+    public async Task<IEnumerable<ProjectInfoModel>> GetProjectInfo(string? projectType)
     {
         await using var connection = new NpgsqlConnection(_connectionString);
 
@@ -42,7 +42,7 @@ public class ProjectInfoRepository
             parameters.Add("ProjectType", projectType);
         }
 
-        var result = await connection.QueryAsync<ProjectInfoRepository>(sql);
+        var result = await connection.QueryAsync<ProjectInfoModel>(sql);
         return result;
     }
 }

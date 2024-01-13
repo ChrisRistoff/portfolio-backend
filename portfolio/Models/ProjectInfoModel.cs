@@ -9,11 +9,5 @@ public class ProjectInfoModel
     public string? Repo { get; set; }
     public string? Link { get; set; }
     public string[]? TechStack { get; set; }
-    public ProjectType Type { get; set; }
-
-    public enum ProjectType
-    {
-        Frontend,
-        Backend,
-    }
+    public string? Type { get; set; }
 }

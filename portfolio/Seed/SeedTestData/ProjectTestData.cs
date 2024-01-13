@@ -15,7 +15,7 @@ public class ProjectTestData
                 Repo = "test repo",
                 Link = "test link",
                 TechStack = new string[] { "test", "test", "test" },
-                Type = ProjectObject.ProjectType.Frontend,
+                Type = "Backend"
             },
 
             new ProjectObject
@@ -27,7 +27,7 @@ public class ProjectTestData
                 Repo = "test repo 2",
                 Link = "test link 2",
                 TechStack = new string[] { "test 2", "test 2", "test 2" },
-                Type = ProjectObject.ProjectType.Backend,
+                Type = "Frontend"
             },
         };
     }
