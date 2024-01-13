@@ -1,16 +1,13 @@
 using MailKit.Net.Smtp;
-using MimeKit;
 using Microsoft.Extensions.Options;
+using MimeKit;
 using portfolio.Models;
 
-public class EmailService
-{
-    private readonly EmailSettings _emailSettings;
+namespace portfolio.Services;
 
-    public EmailService(IOptions<EmailSettings> emailSettings)
-    {
-        _emailSettings = emailSettings.Value;
-    }
+public class EmailService(IOptions<EmailSettings> emailSettings)
+{
+    private readonly EmailSettings _emailSettings = emailSettings.Value;
 
     public async Task SendEmailAsync(string email, string subject, string message)
     {

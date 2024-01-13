@@ -2,6 +2,7 @@ using FluentMigrator.Runner;
 using portfolio.Models;
 using portfolio.Repositories;
 using portfolio.Seed;
+using portfolio.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
