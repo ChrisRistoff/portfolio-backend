@@ -148,7 +148,6 @@ if (env == "Testing")
 {
     await Migrate(app.Services);
     await SeedTest.Seed(builder.Configuration.GetConnectionString(connectionStringName)!, builder.Configuration);
-    await SeedAdmin.Seed(builder.Configuration.GetConnectionString(connectionStringName)!, builder.Configuration);
 }
 
 if (env == "Development")
