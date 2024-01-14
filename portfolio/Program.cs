@@ -3,6 +3,7 @@ using FluentMigrator.Runner;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using portfolio.Auth;
 using portfolio.Models;
 using portfolio.Repositories;
 using portfolio.Seed;
@@ -90,30 +91,17 @@ Task Migrate(IServiceProvider serviceProvider)
     return Task.CompletedTask;
 }
 
+builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
+
 // register repositories
 builder.Services.AddScoped<PersonalInfoRepository>();
 builder.Services.AddScoped<ProjectInfoRepository>();
+builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<AdminRepository>();
 
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 builder.Services.AddTransient<EmailService>();
 
-var app = builder.Build();
-
-if (env == "Testing")
-{
-    await Migrate(app.Services);
-    await SeedTest.Seed(builder.Configuration.GetConnectionString(connectionStringName)!);
-}
-
-if (env == "Development" || env == "Production")
-{
-
-    await Migrate(app.Services);
-    await SeedProd.Seed(builder.Configuration.GetConnectionString(connectionStringName)!);
-
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
 
 builder.Services.AddAuthentication(options =>
     {
@@ -135,13 +123,34 @@ builder.Services.AddAuthentication(options =>
         };
     });
 
+var app = builder.Build();
+
+if (env == "Testing")
+{
+    await Migrate(app.Services);
+    await SeedTest.Seed(builder.Configuration.GetConnectionString(connectionStringName)!, builder.Configuration);
+    await SeedAdmin.Seed(builder.Configuration.GetConnectionString(connectionStringName)!, builder.Configuration);
+}
+
+if (env == "Development" || env == "Production")
+{
+
+    await Migrate(app.Services);
+    await SeedProd.Seed(builder.Configuration.GetConnectionString(connectionStringName)!);
+    await SeedAdmin.Seed(builder.Configuration.GetConnectionString(connectionStringName)!, builder.Configuration);
+
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+
 
 app.UseCors("AllowAll");
 
+app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseHttpsRedirection();
-app.UseRouting();
 app.MapControllers();
 
 app.Run();

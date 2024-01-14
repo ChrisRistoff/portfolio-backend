@@ -8,32 +8,33 @@ namespace portfolio.Seed;
 
 public class SeedAdmin
 {
-    public static async Task Seed(string connectionString)
+
+    public static async Task Seed(string connectionString, IConfiguration configuration)
     {
-        User[] adminData = AdminData.GetAdminData();
+        Admin[] adminData = AdminData.GetAdminData();
 
         // connect to database with dapper
         await using var connection = new NpgsqlConnection(connectionString);
 
-        foreach (User admin in adminData)
+        foreach (Admin admin in adminData)
         {
-            admin.Password = new AuthService().HashPassword(admin.Password!);
+            admin.Password = new AuthService(configuration).HashPassword(admin.Password!);
         }
 
         Console.WriteLine("Seeding admin...");
         Console.WriteLine("--------------------------------------------------------------");
 
         // seed admin table
-        foreach (User admin in adminData)
+        foreach (Admin admin in adminData)
         {
             StringBuilder sql = new StringBuilder();
-            sql.Append("INSERT INTO admin (id, password, role) VALUES (");
-            sql.Append("@Id, @Password, @Role");
+            sql.Append("INSERT INTO admin (username , password, role) VALUES (");
+            sql.Append("@Username, @Password, @Role");
             sql.Append(")");
             await connection.ExecuteAsync(sql.ToString(),
                 new
                 {
-                    Id = admin.Id,
+                    Username = admin.Username,
                     Password = admin.Password,
                     Role = admin.Role,
                 }

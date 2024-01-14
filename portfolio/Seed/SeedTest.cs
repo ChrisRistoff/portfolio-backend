@@ -1,15 +1,18 @@
 using System.Text;
 using Dapper;
 using Npgsql;
+using portfolio.Auth;
+using portfolio.Models;
 
 namespace portfolio.Seed;
 
 public class SeedTest
 {
-    public static async Task Seed(string connectionString)
+    public static async Task Seed(string connectionString, IConfiguration configuration)
     {
         ProfileObject profileData = ProfileTestData.GetProfileTestData();
         ProjectObject[] projectData = ProjectTestData.GetProjectTestData();
+        Admin[] adminData = new TestAdminData().GetTestAdminData();
 
         await using var connection = new NpgsqlConnection(connectionString);
 
@@ -56,6 +59,25 @@ public class SeedTest
                 }
             );
         }
+
+        Console.WriteLine("Seeding admin...");
+        Console.WriteLine("--------------------------------------------------------------");
+        foreach (Admin admin in adminData)
+        {
+            admin.Password = new AuthService(configuration).HashPassword(admin.Password!);
+
+            StringBuilder sql = new StringBuilder();
+            sql.Append("INSERT INTO admin (username , password, role) VALUES (");
+            sql.Append("@Username, @Password, @Role");
+            sql.Append(")");
+            await connection.ExecuteAsync(sql.ToString(),
+                new
+                {
+                    Username = admin.Username,
+                    Password = admin.Password,
+                    Role = admin.Role,
+                }
+            );
+        }
     }
 }
-
