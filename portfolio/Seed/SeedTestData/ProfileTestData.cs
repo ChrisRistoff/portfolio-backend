@@ -7,6 +7,7 @@ public class ProfileTestData
         return new ProfileObject
         {
             Name = "test name",
+            Title = "test title",
             Email = "test email",
             Bio = "test bio",
             Github = "test github",
