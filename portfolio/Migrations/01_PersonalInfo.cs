@@ -13,6 +13,7 @@ public class PersonalInfo : Migration
         sql.Append("CREATE TABLE personal_info (");
         sql.Append("id INT NOT NULL,");
         sql.Append("name VARCHAR(50) NOT NULL,");
+        sql.Append("title VARCHAR(50) NOT NULL,");
         sql.Append("email VARCHAR(50) NOT NULL,");
         sql.Append("bio TEXT NOT NULL,");
         sql.Append("github VARCHAR(50) NOT NULL,");

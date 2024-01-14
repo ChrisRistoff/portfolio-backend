@@ -24,9 +24,9 @@ public class ProjectData
                 Id = 1,
                 Name = "Portfolio",
                 Tagline = "My personal website",
-                Description = "My personal website, built with ASP.NET Core 8 and C#.",
+                Description = "My personal website, built with ASP.NET Core 8 and C#. My personal website, built with ASP.NET Core 8 and C#.My personal website, built with ASP.NET Core 8 and C#.My personal website, built with ASP.NET Core 8 and C#.My personal website, built with ASP.NET Core 8 and C#.My personal website, built with ASP.NET Core 8 and C#.My personal website, built with ASP.NET Core 8 and C#.My personal website, built with ASP.NET Core 8 and C#.My personal website, built with ASP.NET Core 8 and C#.My personal website, built with ASP.NET Core 8 and C#.My personal website, built with ASP.NET Core 8 and C#.",
                 Image = "https://i.imgur.com/6Z2Q9ZM.png",
-                Repo = "www.github.com/krasenHristov/portfolio",
+                Repo = "https://www.github.com/krasenHristov/portfolio-backend",
                 Link = "www.krasenhristov.com",
                 TechStack = new string[] { "C#", "ASP.NET Core", "PostgreSQL", "Docker", "Nginx" },
                 Type = "Backend"
