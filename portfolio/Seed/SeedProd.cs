@@ -18,11 +18,12 @@ public class SeedProd
         Console.WriteLine("--------------------------------------------------------------");
         // seed personal_info table
         await connection.ExecuteAsync(
-            "INSERT INTO personal_info (id, name, email, bio, github, linkedin, image) VALUES (@Id, @Name, @Email, @Bio, @Github, @Linkedin, @Image)",
+            "INSERT INTO personal_info (id, name, title, email, bio, github, linkedin, image) VALUES (@Id, @Name, @Title, @Email, @Bio, @Github, @Linkedin, @Image)",
             new
             {
                 Id = profileData.Id,
                 Name = profileData.Name,
+                Title = profileData.Title,
                 Email = profileData.Email,
                 Bio = profileData.Bio,
                 Github = profileData.Github,

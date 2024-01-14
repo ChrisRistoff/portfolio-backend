@@ -16,7 +16,7 @@ public class Projects : Migration
         sql.Append("tagline VARCHAR(100) NOT NULL,");
         sql.Append("description TEXT NOT NULL,");
         sql.Append("image TEXT NOT NULL,");
-        sql.Append("repo VARCHAR(50) NOT NULL,");
+        sql.Append("repo VARCHAR(100) NOT NULL,");
         sql.Append("link VARCHAR(100) NOT NULL,");
         sql.Append("tech_stack TEXT[] NOT NULL,");
         sql.Append("project_type TEXT NOT NULL");

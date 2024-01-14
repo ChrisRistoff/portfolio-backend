@@ -17,9 +17,13 @@ public class ProjectInfoRepository
         {
             _connectionString = config1.GetConnectionString("TestConnection");
         }
-        else
+        if (env == "Development")
         {
             _connectionString = config1.GetConnectionString("DefaultConnection");
+        }
+        if (env == "Production")
+        {
+            _connectionString = config1.GetConnectionString("ProductionConnection");
         }
     }
 

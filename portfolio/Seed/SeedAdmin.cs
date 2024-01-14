@@ -11,6 +11,8 @@ public class SeedAdmin
 
     public static async Task Seed(string connectionString, IConfiguration configuration)
     {
+        var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
+
         Admin[] adminData = AdminData.GetAdminData();
 
         // connect to database with dapper

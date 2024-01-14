@@ -1,0 +1,59 @@
+name: xUnit.NET Test
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_DB: test_db
+          POSTGRES_USER: test_user
+          POSTGRES_PASSWORD: password
+        ports:
+          - 5433:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 6s
+          --health-timeout 6s
+          --health-retries 6
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4.1.1
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '8.0'
+
+      - name: Restore Dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore
+
+      - name: Set Testing Environment
+        run: echo "ASPNETCORE_ENVIRONMENT=Testing" >> $GITHUB_ENV
+        
+      - name: Set Testing Connection String
+        run: echo "ConnectionStrings__TestConnection=Host=localhost;Port=5433;Database=test_db;Username=test_user;Password=password" >> $GITHUB_ENV
+
+      - name: Set up JWT Secret
+        run: echo "JWT__Key=${{ secrets.JWT_KEY }}" >> $GITHUB_ENV
+
+      - name: Set up JWT Issuer
+        run: echo "JWT__Issuer=portfolio" >> $GITHUB_ENV
+
+      - name: Set up JWT Audience
+        run: echo "JWT__Audience=portfolio" >> $GITHUB_ENV
+
+      - name: Test
+        run: dotnet test
