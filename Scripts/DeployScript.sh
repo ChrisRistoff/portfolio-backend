@@ -2,7 +2,7 @@
 
 set -e
 
-CONTAINER_NAME="recipes_cont"
+CONTAINER_NAME="portfolio-back"
 IMAGE_NAME="krahristov/portfolio:latest"
 APP_DIR="$HOME/portfolio-backend"
 
