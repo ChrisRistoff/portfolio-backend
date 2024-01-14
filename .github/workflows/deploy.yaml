@@ -16,10 +16,9 @@ jobs:
       - name: Decrypt appsettings.json
         run: openssl aes-256-cbc -d -in portfolio/appsettings.json.enc -out portfolio/appsettings.json -k ${{ secrets.ENCRYPTION_KEY }} -pbkdf2 -iter 100000
 
+      - name: Set up SSH
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-      
-      - name: Set up SSH
         run: |
           mkdir -p ~/.ssh/
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
