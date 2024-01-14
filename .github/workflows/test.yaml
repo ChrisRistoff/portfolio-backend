@@ -42,7 +42,7 @@ jobs:
 
       - name: Set Testing Environment
         run: echo "ASPNETCORE_ENVIRONMENT=Testing" >> $GITHUB_ENV
-
+        
       - name: Set Testing Connection String
         run: echo "ConnectionStrings__TestConnection=Host=localhost;Port=5433;Database=test_db;Username=test_user;Password=password" >> $GITHUB_ENV
 
