@@ -14,7 +14,7 @@ public class PersonalInfoRepository
         _config = config;
         string env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
 
-        if (env == "Development" || env == "Production")
+        if (env == "Development")
         {
             _connectionString = _config.GetConnectionString("DefaultConnection");
         }
@@ -22,6 +22,11 @@ public class PersonalInfoRepository
         if (env == "Testing")
         {
             _connectionString = _config.GetConnectionString("TestConnection");
+        }
+
+        if (env == "Production")
+        {
+            _connectionString = _config.GetConnectionString("ProductionConnection");
         }
     }
 

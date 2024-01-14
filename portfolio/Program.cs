@@ -64,11 +64,15 @@ if (env == "Testing")
     connectionStringName = "TestConnection";
 }
 
-if (env == "Development" || env == "Production")
+if (env == "Development")
 {
     connectionStringName = "DefaultConnection";
 }
 
+if (env == "Production")
+{
+    connectionStringName = "ProductionConnection";
+}
 
 Console.WriteLine($"Environment: {env}");
 Console.WriteLine($"Connection String: {connectionStringName}");
@@ -86,6 +90,15 @@ Task Migrate(IServiceProvider serviceProvider)
     using var scope = serviceProvider.CreateScope();
     var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
     runner.MigrateDown(0);
+    runner.MigrateUp();
+
+    return Task.CompletedTask;
+}
+
+Task MigrateProd(IServiceProvider serviceProvider)
+{
+    using var scope = serviceProvider.CreateScope();
+    var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
     runner.MigrateUp();
 
     return Task.CompletedTask;
@@ -138,12 +151,20 @@ if (env == "Testing")
     await SeedAdmin.Seed(builder.Configuration.GetConnectionString(connectionStringName)!, builder.Configuration);
 }
 
-if (env == "Development" || env == "Production")
+if (env == "Development")
 {
 
     await Migrate(app.Services);
     await SeedProd.Seed(builder.Configuration.GetConnectionString(connectionStringName)!);
     await SeedAdmin.Seed(builder.Configuration.GetConnectionString(connectionStringName)!, builder.Configuration);
+
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+if (env == "Production")
+{
+    await MigrateProd(app.Services);
 
     app.UseSwagger();
     app.UseSwaggerUI();
