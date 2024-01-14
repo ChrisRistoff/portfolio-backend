@@ -3,7 +3,7 @@
 set -e
 
 CONTAINER_NAME="portfolio-back"
-IMAGE_NAME="krahristov/portfolio:latest"
+IMAGE_NAME="krahristov/portfolio-backend:latest"
 APP_DIR="$HOME/portfolio-backend"
 
 echo "Starting deployment..."
