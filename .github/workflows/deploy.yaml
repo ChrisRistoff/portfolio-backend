@@ -40,11 +40,11 @@ jobs:
       - name: Copy deployment script
 
         run: |
-          scp -o StrictHostKeyChecking=no Scripts/DeployScript.sh ubuntu@ec2-35-179-90-244.eu-west-2.compute.amazonaws.com:~
+          scp -o StrictHostKeyChecking=no Scripts/DeployScriptPortfolioBackend.sh ubuntu@ec2-35-179-90-244.eu-west-2.compute.amazonaws.com:~
 
       - name: Run deployment script
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@ec2-35-179-90-244.eu-west-2.compute.amazonaws.com "\
-          ls -l ~/DeployScript.sh && \
-          chmod +x ~/DeployScript.sh && \
-          bash ~/DeployScript.sh"
+          ls -l ~/DeployScriptPortfolioBackend.sh && \
+          chmod +x ~/DeployScriptPortfolioBackend.sh && \
+          bash ~/DeployScriptPortfolioBackend.sh"
