@@ -43,7 +43,20 @@ public class ProjectTestData
                 Link = "test link 3",
                 TechStack = new string[] { "test 3", "test 3", "test 3" },
                 Type = "Fullstack"
-            }
+            },
+
+            new ProjectObject
+            {
+                Id = 4,
+                Name = "test project 4",
+                Tagline = "test tagline 4",
+                Description = "test description 4",
+                Image = "test image 4",
+                Repo = "test repo 4",
+                Link = "test link 4",
+                TechStack = new string[] { "test 4", "test 4", "test 4" },
+                Type = "Backend"
+            },
         };
     }
 }
