@@ -8,6 +8,7 @@ public class ProjectTestData
         {
             new ProjectObject
             {
+                Id = 1,
                 Name = "test project",
                 Tagline = "test tagline",
                 Description = "test description",
@@ -20,6 +21,7 @@ public class ProjectTestData
 
             new ProjectObject
             {
+                Id = 2,
                 Name = "test project 2",
                 Tagline = "test tagline 2",
                 Description = "test description 2",

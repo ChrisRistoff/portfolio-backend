@@ -84,4 +84,21 @@ public class ProjectInfoTests
         Assert.Equal(projectInfo?.Link, project.Link);
         Assert.Equal(projectInfo?.Type, project.Type);
     }
+
+    [Fact]
+    public async Task GetProjectById_ShouldSucceed()
+    {
+        var response = await _client.GetAsync("/api/project-info/1");
+        var responseString = await response.Content.ReadAsStringAsync();
+        var personalInfo = JsonConvert.DeserializeObject<ProjectInfoModel>(responseString);
+
+        Assert.IsType<ProjectInfoModel>(personalInfo);
+        Assert.Equal("test project", personalInfo!.Name);
+        Assert.Equal("test tagline", personalInfo.Tagline);
+        Assert.Equal("test description", personalInfo.Description);
+        Assert.Equal("test image", personalInfo.Image);
+        Assert.Equal("test repo", personalInfo.Repo);
+        Assert.Equal("test link", personalInfo.Link);
+        Assert.Equal(["test", "test", "test"], personalInfo.TechStack);
+    }
 }
