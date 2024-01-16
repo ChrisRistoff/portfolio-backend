@@ -42,4 +42,32 @@ public class PersonalInfoRepository
         var result = await connection.QueryAsync<PersonalInfoModel>(sql);
         return result.FirstOrDefault()!;
     }
+
+    public async Task<PersonalInfoModel> UpdateTitle(UpdateTitleModel model)
+    {
+        await using var connection = new NpgsqlConnection(_connectionString);
+
+        var sql = @"
+            UPDATE personal_info
+            SET title = @Title
+            RETURNING *
+        ";
+
+        var result = await connection.QueryAsync<PersonalInfoModel>(sql, model);
+        return result.FirstOrDefault()!;
+    }
+
+    public async Task<PersonalInfoModel> UpdateBio(UpdateBioModel model)
+    {
+        await using var connection = new NpgsqlConnection(_connectionString);
+
+        var sql = @"
+            UPDATE personal_info
+            SET bio = @Bio
+            RETURNING *
+        ";
+
+        var result = await connection.QueryAsync<PersonalInfoModel>(sql, model);
+        return result.FirstOrDefault()!;
+    }
 }

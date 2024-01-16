@@ -26,7 +26,9 @@ public class ProjectData
                 Tagline = "My personal website",
                 Description = "A portfolio project I created to easily update project links without the need to revise my entire CV. " +
                               "As I'm still relatively new to deployment and CI/CD pipelines, " +
-                              "this approach allows for flexibility and efficiency in managing project references.",
+                              "this approach allows for flexibility and efficiency in managing project references. \n\n" +
+                              "Currently working on adding an admin panel where I can edit everything, this will also include a " +
+                              "node project inside my portfolio project that will allow me to pull latest information from the DB and update the production seed files.",
                 Image = "null",
                 Repo = "https://www.github.com/krasenHristov/portfolio-backend",
                 Link = "http://ec2-35-179-90-244.eu-west-2.compute.amazonaws.com:8080/swagger/index.html",
@@ -68,8 +70,8 @@ public class ProjectData
 
             new ProjectObject
             {
-                Id = 1,
-                Name = "Recipe GitHub",
+                Id = 4,
+                Name = "Recipe GitHub Frontend",
                 Tagline = "Frontend of the Recipe GitHub project",
                 Description = "The frontend of this project complements the backend, offering a user-friendly interface for Recipe GitHub. " +
                               "While my primary focus was on setting up CICD and the AWS server, I also provided occasional support to colleagues facing challenges. " +
@@ -84,7 +86,7 @@ public class ProjectData
 
             new ProjectObject
             {
-                Id = 1,
+                Id = 5,
                 Name = "NC-News Backend",
                 Tagline = "A Reddit-like news site",
                 Description = "NC-News Backend is a Reddit-like news site where I leveraged technologies beyond my bootcamp curriculum. " +
@@ -99,22 +101,7 @@ public class ProjectData
 
             new ProjectObject
             {
-                Id = 1,
-                Name = "NC-News Frontend",
-                Tagline = "Frontend of the NC-News project",
-                Description = "The NC-News Frontend complements the backend, providing a functional user interface for the NC-News project. " +
-                              "My primary goal was to gain a deep understanding of frontend-backend integration rather than focusing on aesthetics. " +
-                              "While it may not be the most visually appealing, it serves as a valuable learning experience for improving my backend development skills.",
-                Image = "null",
-                Repo = "",
-                Link = "http://ec2-35-179-90-244.eu-west-2.compute.amazonaws.com:3000",
-                TechStack = new string[] { "React", "Javascript", "Docker", "GithubActions", "AWS" },
-                Type = "Frontend"
-            },
-
-            new ProjectObject
-            {
-                Id = 1,
+                Id = 6,
                 Name = "NC-News Frontend",
                 Tagline = "Frontend of the NC-News project",
                 Description = "The NC-News Frontend complements the backend, providing a functional user interface for the NC-News project. " +
@@ -129,7 +116,7 @@ public class ProjectData
 
             new ProjectObject
             {
-                Id = 1,
+                Id = 7,
                 Name = "Simple Recipe App",
                 Tagline = "Simple recipe app",
                 Description = "I created the Simple Recipe App as a learning exercise mostly by following a tutorial. " +
@@ -138,7 +125,7 @@ public class ProjectData
                               "I also took the opportunity to customize and extend the project to further enhance my understanding of these technologies.",
                 Image = "null",
                 Repo = "https://github.com/krasenHristov/django",
-                Link = "http://ec2-35-179-90-244.eu-west-2.compute.amazonaws.com:3000",
+                Link = "http://ec2-54-90-144-115.compute-1.amazonaws.com/api/docs/",
                 TechStack = new string[] { "Python", "Django", "PostgreSQL", "Docker", "GithubActions", "AWS" },
                 Type = "Backend"
             },

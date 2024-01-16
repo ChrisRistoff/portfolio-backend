@@ -47,6 +47,7 @@ public class ProjectInfoRepository
         {
             var project = new ProjectInfoModel
             {
+                Id = result.id,
                 Name = result.name,
                 Tagline = result.tagline,
                 Description = result.description,

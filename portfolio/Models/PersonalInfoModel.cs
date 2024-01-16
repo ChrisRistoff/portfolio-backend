@@ -10,3 +10,13 @@ public class PersonalInfoModel
     public string? Linkedin { get; set; }
     public string? Image { get; set; }
 }
+
+public class UpdateTitleModel
+{
+    public string? Title { get; set; }
+}
+
+public class UpdateBioModel
+{
+    public string? Bio { get; set; }
+}
