@@ -43,6 +43,32 @@ public class ProjectInfoController(ProjectInfoRepository projectInfoRepository) 
         try
         {
             var result = await projectInfoRepository.GetProjectById(id);
+
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+    [HttpPatch("api/project-info/{id}")]
+    public async Task<ActionResult<ProjectInfoModel>> UpdateProjectInfo(int id, UpdateProjectDto projectInfo)
+    {
+        try
+        {
+            var result = await projectInfoRepository.UpdateProject(id, projectInfo);
+
+            if (result == null)
+            {
+                return NotFound();
+            }
+
             return Ok(result);
         }
         catch (Exception e)

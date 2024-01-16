@@ -31,6 +31,19 @@ public class ProjectTestData
                 TechStack = new string[] { "test 2", "test 2", "test 2" },
                 Type = "Frontend"
             },
+
+            new ProjectObject
+            {
+                Id = 3,
+                Name = "test project 3",
+                Tagline = "test tagline 3",
+                Description = "test description 3",
+                Image = "test image 3",
+                Repo = "test repo 3",
+                Link = "test link 3",
+                TechStack = new string[] { "test 3", "test 3", "test 3" },
+                Type = "Fullstack"
+            }
         };
     }
 }
