@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using portfolio.Models;
 using portfolio.Repositories;
@@ -13,6 +14,35 @@ public class ProjectInfoController(ProjectInfoRepository projectInfoRepository) 
         try
         {
             var result = await projectInfoRepository.GetProjectInfo(projectType);
+            return Ok(result);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+    [HttpPost("api/project-info")]
+    [Authorize]
+    public async Task<ActionResult<ProjectInfoModel>> CreateProjectInfo(CreateProjectDto projectInfo)
+    {
+        try
+        {
+            var result = await projectInfoRepository.CreateNewProject(projectInfo);
+            return Created($"/api/project-info", result);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+    [HttpGet("api/project-info/{id}")]
+    public async Task<ActionResult<ProjectInfoModel>> GetProjectById(int id)
+    {
+        try
+        {
+            var result = await projectInfoRepository.GetProjectById(id);
             return Ok(result);
         }
         catch (Exception e)
