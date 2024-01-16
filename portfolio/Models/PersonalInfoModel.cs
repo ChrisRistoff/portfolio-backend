@@ -15,3 +15,8 @@ public class UpdateTitleModel
 {
     public string? Title { get; set; }
 }
+
+public class UpdateBioModel
+{
+    public string? Bio { get; set; }
+}

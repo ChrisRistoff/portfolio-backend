@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using portfolio.Models;
 using portfolio.Repositories;
@@ -22,11 +23,27 @@ public class PersonalInfoController(PersonalInfoRepository personalInfoRepositor
     }
 
     [HttpPatch("api/personal-info/title")]
+    [Authorize]
     public async Task<IActionResult> UpdateTitle(UpdateTitleModel model)
     {
         try
         {
             var result = await personalInfoRepository.UpdateTitle(model);
+            return Ok(result);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+    [HttpPatch("api/personal-info/bio")]
+    [Authorize]
+    public async Task<IActionResult> UpdateBio(UpdateBioModel model)
+    {
+        try
+        {
+            var result = await personalInfoRepository.UpdateBio(model);
             return Ok(result);
         }
         catch (Exception e)
