@@ -3,6 +3,8 @@ using System.Text;
 using Newtonsoft.Json;
 using portfolio.Models;
 
+namespace portfolio.test.Tests;
+
 [Collection("Sequential")]
 public class PersonalInfoTests
 {
@@ -40,7 +42,7 @@ public class PersonalInfoTests
         var loginResponseDto = JsonConvert.DeserializeObject<LoginResponseDto>(loginResponseString);
 
         // set token
-        _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", loginResponseDto.Token);
+        _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", loginResponseDto!.Token);
 
         var model = new UpdateTitleModel { Title = "test title" };
         var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
@@ -74,7 +76,7 @@ public class PersonalInfoTests
         var loginResponseDto = JsonConvert.DeserializeObject<LoginResponseDto>(loginResponseString);
 
         // set token
-        _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", loginResponseDto.Token);
+        _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", loginResponseDto!.Token);
 
         var model = new UpdateBioModel { Bio = "test bio" };
         var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
