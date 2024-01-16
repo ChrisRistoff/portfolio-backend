@@ -101,4 +101,52 @@ public class ProjectInfoTests
         Assert.Equal("test link", personalInfo.Link);
         Assert.Equal(["test", "test", "test"], personalInfo.TechStack);
     }
+
+    [Fact]
+    public async Task UpdateProject_ShouldSucceed()
+    {
+        var user = new LoginAdminDto
+        {
+            Username = "test",
+            Password = "test"
+        };
+
+        var response = await _client.PostAsync("/api/login-admin", new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json"));
+
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+        var responseString = await response.Content.ReadAsStringAsync();
+        var token = JsonConvert.DeserializeObject<LoginResponseDto>(responseString);
+        _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token!.Token);
+
+        var project = new UpdateProjectDto
+        {
+            Id = 1,
+            Name = "test project 5",
+            Tagline = "test tagline 5",
+            Description = "test description 5",
+            Image = "test image 5",
+            Repo = "test repo 5",
+            Link = "test link 5",
+            TechStack = ["test 5", "test 5", "test 5"],
+            Type = "test type 5"
+        };
+
+        var response2 = await _client.PatchAsync("/api/project-info/3", new StringContent(JsonConvert.SerializeObject(project), Encoding.UTF8, "application/json"));
+
+        response2.EnsureSuccessStatusCode();
+
+        var responseString2 = await response2.Content.ReadAsStringAsync();
+
+        var projectInfo = JsonConvert.DeserializeObject<ProjectInfoModel>(responseString2);
+
+        Assert.Equal(projectInfo?.Id, project.Id);
+        Assert.Equal(projectInfo?.Name, project.Name);
+        Assert.Equal(projectInfo?.Tagline, project.Tagline);
+        Assert.Equal(projectInfo?.Description, project.Description);
+        Assert.Equal(projectInfo?.Image, project.Image);
+        Assert.Equal(projectInfo?.Repo, project.Repo);
+        Assert.Equal(projectInfo?.Link, project.Link);
+        Assert.Equal(projectInfo?.Type, project.Type);
+    }
 }
