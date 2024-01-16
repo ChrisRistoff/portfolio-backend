@@ -1,5 +1,6 @@
 using Dapper;
 using Npgsql;
+using Org.BouncyCastle.Asn1.X509.Qualified;
 using portfolio.Models;
 
 namespace portfolio.Repositories;
@@ -159,5 +160,14 @@ public class ProjectInfoRepository
             TechStack = ((string[])result.tech_stack)?.ToArray(),
             Type = result.project_type
         };
+    }
+
+    public async Task DeleteProject(int projectId)
+    {
+        await using var connection = new NpgsqlConnection(_connectionString);
+
+        string sql = @"DELETE FROM projects WHERE id = @ProjectId";
+
+        await connection.ExecuteAsync(sql, new { ProjectId = projectId });
     }
 }

@@ -76,4 +76,25 @@ public class ProjectInfoController(ProjectInfoRepository projectInfoRepository) 
             return BadRequest(e.Message);
         }
     }
+
+    [HttpDelete("api/project-info/{id}")]
+    public async Task<ActionResult<ProjectInfoModel>> DeleteProjectInfo(int id)
+    {
+        try
+        {
+            var project = await projectInfoRepository.GetProjectById(id);
+
+            if (project == null)
+            {
+                return NotFound();
+            }
+
+            await projectInfoRepository.DeleteProject(id);
+            return NoContent();
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
 }
