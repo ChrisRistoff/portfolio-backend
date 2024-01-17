@@ -24,7 +24,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo{Title = "Open Source Recipes", Version = "v1"});
+    c.SwaggerDoc("v1", new OpenApiInfo{Title = "Portfolio", Version = "v1"});
 
     // add JWT Authentication
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
