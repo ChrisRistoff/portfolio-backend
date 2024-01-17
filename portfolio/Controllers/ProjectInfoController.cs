@@ -9,7 +9,7 @@ namespace portfolio.Controllers;
 public class ProjectInfoController(ProjectInfoRepository projectInfoRepository) : ControllerBase
 {
     [HttpGet("api/project-info")]
-    public async Task<ActionResult<IEnumerable<ProjectInfoModel>>> GetPersonalInfo(string? projectType)
+    public async Task<ActionResult<IEnumerable<ProjectInfoModel>>> GetProjectsInfo(string? projectType)
     {
         try
         {
@@ -58,6 +58,7 @@ public class ProjectInfoController(ProjectInfoRepository projectInfoRepository) 
     }
 
     [HttpPatch("api/project-info/{id}")]
+    [Authorize]
     public async Task<ActionResult<ProjectInfoModel>> UpdateProjectInfo(int id, UpdateProjectDto projectInfo)
     {
         try
@@ -78,6 +79,7 @@ public class ProjectInfoController(ProjectInfoRepository projectInfoRepository) 
     }
 
     [HttpDelete("api/project-info/{id}")]
+    [Authorize]
     public async Task<ActionResult<ProjectInfoModel>> DeleteProjectInfo(int id)
     {
         try
