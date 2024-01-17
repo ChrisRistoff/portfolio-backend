@@ -8,6 +8,7 @@ using portfolio.Models;
 using portfolio.Repositories;
 using portfolio.Seed;
 using portfolio.Services;
+using portfolio.Storage;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -114,6 +115,7 @@ builder.Services.AddScoped<AdminRepository>();
 
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 builder.Services.AddTransient<EmailService>();
+builder.Services.AddTransient<StorageService>();
 
 
 builder.Services.AddAuthentication(options =>
