@@ -2,11 +2,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using portfolio.Models;
 using portfolio.Repositories;
+using portfolio.Storage;
 
 namespace portfolio.Controllers;
 
 [ApiController]
-public class PersonalInfoController(PersonalInfoRepository personalInfoRepository) : ControllerBase
+public class PersonalInfoController(PersonalInfoRepository personalInfoRepository, StorageService storageService) : ControllerBase
 {
     [HttpGet("api/personal-info")]
     public async Task<ActionResult<PersonalInfoModel>> GetPersonalInfo()
@@ -45,6 +46,24 @@ public class PersonalInfoController(PersonalInfoRepository personalInfoRepositor
         {
             var result = await personalInfoRepository.UpdateBio(model);
             return Ok(result);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+    [HttpPatch("api/personal-info/image")]
+    [Authorize]
+    public async Task<IActionResult> UploadImage(IFormFile file)
+    {
+        try
+        {
+            var result = await storageService.UploadFileAsync(file.OpenReadStream(), file.FileName);
+
+            var updatedPersonalInfo = await personalInfoRepository.UploadImage(result);
+
+            return Ok(updatedPersonalInfo);
         }
         catch (Exception e)
         {

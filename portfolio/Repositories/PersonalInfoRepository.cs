@@ -70,4 +70,19 @@ public class PersonalInfoRepository
         var result = await connection.QueryAsync<PersonalInfoModel>(sql, model);
         return result.FirstOrDefault()!;
     }
+
+    public async Task<PersonalInfoModel> UploadImage(string image)
+    {
+        await using var connection = new NpgsqlConnection(_connectionString);
+
+        var sql = @"
+            UPDATE personal_info
+            SET image = @Image
+            WHERE id = 1
+            RETURNING *
+        ";
+
+        var result = await connection.QueryAsync<PersonalInfoModel>(sql, new { Image = image });
+        return result.FirstOrDefault()!;
+    }
 }
