@@ -1,0 +1,143 @@
+[
+  {
+    "id": 1,
+    "name": "Portfolio Backend",
+    "tagline": "My personal website",
+    "description": "A portfolio project I created to easily update project links without the need to revise my entire CV. As I'm still relatively new to deployment and CI/CD pipelines, this approach allows for flexibility and efficiency in managing project references.",
+    "image": "null",
+    "repo": "https://www.github.com/krasenHristov/portfolio-backend",
+    "link": "http://ec2-35-179-90-244.eu-west-2.compute.amazonaws.com:8080/swagger/index.html",
+    "tech_stack": [
+      "C#",
+      "ASP.NET Core 8",
+      "Node",
+      "Javascript",
+      "Dapper",
+      "FluentMigrator",
+      "PostgreSQL",
+      "Docker",
+      "GithubActions",
+      "AWS",
+      "JWT",
+      "Mailkit",
+      "Firebase Cloud Storage"
+    ],
+    "project_type": "Backend"
+  },
+  {
+    "id": 2,
+    "name": "Portfolio Frontend",
+    "tagline": "My personal website",
+    "description": "The frontend of my portfolio project has a simple and elegant design that helps me display my projects clearly and without unnecessary complexity. I created this space primarily to present my work and make it easy to update when necessary. This way, I can keep my project references current without having to make extensive changes to my CV. \n\n The admin panel currently is accessible but requires auth so information can't be changed by anyone but me.",
+    "image": "null",
+    "repo": "https://www.github.com/krasenHristov/portfolio-frontend",
+    "link": "http://ec2-35-179-90-244.eu-west-2.compute.amazonaws.com:9090",
+    "tech_stack": [
+      "Typescript",
+      "React",
+      "Vite",
+      "Docker",
+      "GithubActions",
+      "AWS"
+    ],
+    "project_type": "Frontend"
+  },
+  {
+    "id": 3,
+    "name": "Recipe GitHub",
+    "tagline": "Group project, reference Actions and Commits to get the full picture",
+    "description": "A Recipe website but with a twist, users are not only able to create their recipes,they can also Fork(copy) other users recipes and make their own version of it. There is support for 1-5 star reviws, comments, search, featured recipes using the TSVECTOR table for the search, likes on comments and much more.",
+    "image": "null",
+    "repo": "https://www.github.com/krasenHristov/RecipeHub",
+    "link": "http://ec2-18-130-212-68.eu-west-2.compute.amazonaws.com:5000/swagger/index.html",
+    "tech_stack": [
+      "C#",
+      "ASP.NET Core 8",
+      "Dapper",
+      "FluentMigrator",
+      "PostgreSQL",
+      "Docker",
+      "GithubActions",
+      "AWS",
+      "JWT",
+      "Firebase Cloud Storage"
+    ],
+    "project_type": "Backend"
+  },
+  {
+    "id": 4,
+    "name": "Recipe GitHub Frontend",
+    "tagline": "Frontend of the Recipe GitHub project",
+    "description": "The frontend of this project complements the backend, offering a user-friendly interface for Recipe GitHub. While my primary focus was on setting up CICD and the AWS server, I also provided occasional support to colleagues facing challenges. Continuous communication was essential to ensure seamless integration between frontend and backend components.",
+    "image": "null",
+    "repo": "https://github.com/gcpearse/RecipeHub-FE",
+    "link": "http://ec2-18-130-212-68.eu-west-2.compute.amazonaws.com:3000",
+    "tech_stack": [
+      "React",
+      "TypeScript",
+      "Redux",
+      "ReduxJS Toolkit",
+      "Docker",
+      "GithubActions",
+      "AWS"
+    ],
+    "project_type": "Frontend"
+  },
+  {
+    "id": 5,
+    "name": "NC-News Backend",
+    "tagline": "A Reddit-like news site",
+    "description": "NC-News Backend is a Reddit-like news site where I leveraged technologies beyond my bootcamp curriculum. I not only completed core tasks promptly but also implemented features such as authentication, CICD pipeline, AWS deployment, Docker containerization, TypeScript migration, interactive Swagger documentation, and more. ",
+    "image": "null",
+    "repo": "https://github.com/krasenHristov/nc-news",
+    "link": "http://ec2-35-179-90-244.eu-west-2.compute.amazonaws.com/api/docs",
+    "tech_stack": [
+      "Node",
+      "Express",
+      "Typescript",
+      "PostgreSQL",
+      "Swagger",
+      "JWT",
+      "Docker",
+      "Jest",
+      "GithubActions",
+      "AWS"
+    ],
+    "project_type": "Backend"
+  },
+  {
+    "id": 6,
+    "name": "NC-News Frontend",
+    "tagline": "Frontend of the NC-News project",
+    "description": "The NC-News Frontend complements the backend, providing a functional user interface for the NC-News project. My primary goal was to gain a deep understanding of frontend-backend integration rather than focusing on aesthetics. While it may not be the most visually appealing, it serves as a valuable learning experience for improving my backend development skills.",
+    "image": "null",
+    "repo": "https://github.com/krasenHristov/nc-news-frontend",
+    "link": "http://ec2-35-179-90-244.eu-west-2.compute.amazonaws.com:3000",
+    "tech_stack": [
+      "React",
+      "Javascript",
+      "Docker",
+      "GithubActions",
+      "AWS"
+    ],
+    "project_type": "Frontend"
+  },
+  {
+    "id": 7,
+    "name": "Simple Recipe App",
+    "tagline": "Simple recipe app",
+    "description": "I created the Simple Recipe App as a learning exercise mostly by following a tutorial. This project allowed me to gain hands-on experience with Python, Django, PostgreSQL, Docker, Github Actions, and AWS deployment. While the initial implementation was based on the tutorial, I also took the opportunity to customize and extend the project to further enhance my understanding of these technologies.",
+    "image": "null",
+    "repo": "https://github.com/krasenHristov/django",
+    "link": "http://ec2-54-90-144-115.compute-1.amazonaws.com/api/docs/",
+    "tech_stack": [
+      "Python",
+      "Django",
+      "PostgreSQL",
+      "Docker",
+      "GithubActions",
+      "AWS"
+    ],
+    "project_type": "Backend"
+  }
+]
