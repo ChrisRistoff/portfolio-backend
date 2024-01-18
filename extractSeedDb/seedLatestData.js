@@ -38,6 +38,15 @@ async function seedDatabase() {
 
     console.log('Projects table seeded!');
 
+    const adminData = await fs.promises.readFile('SeedData/admin_data.json', 'utf8');
+    const adminInfo = JSON.parse(adminData);
+
+    for (const info of adminInfo) {
+      const query = `INSERT INTO admin`
+    }
+
+    }
+
     pool.end();
   } catch (err) {
     console.error('Error seeding database:', err);
