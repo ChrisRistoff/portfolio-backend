@@ -1,3 +1,4 @@
+using System.Text;
 using Dapper;
 using Npgsql;
 using Org.BouncyCastle.Asn1.X509.Qualified;
@@ -31,17 +32,19 @@ public class ProjectInfoRepository
     public async Task<IEnumerable<ProjectInfoModel>> GetProjectInfo(string? projectType)
     {
         await using var connection = new NpgsqlConnection(_connectionString);
-        var sql = "SELECT * FROM projects WHERE 1 = 1";
+        StringBuilder sql = new StringBuilder("SELECT * FROM projects WHERE 1 = 1");
 
         DynamicParameters parameters = new DynamicParameters();
 
         if (projectType != null)
         {
-            sql += " AND project_type = @ProjectType";
+            sql.Append(" AND project_type = @ProjectType ");
             parameters.Add("ProjectType", projectType);
         }
 
-        var results = await connection.QueryAsync<dynamic>(sql, parameters);
+        sql.Append(" ORDER BY id ASC");
+
+        var results = await connection.QueryAsync<dynamic>(sql.ToString(), parameters);
         var projects = new List<ProjectInfoModel>();
 
         foreach (var result in results)
