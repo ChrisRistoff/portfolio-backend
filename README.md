@@ -74,7 +74,7 @@ This repository contains the backend code for a portfolio website. It's designed
 - #### This application uses GitHub Actions for continuous integration and deployment. Refer to the .github/workflows directory for more details.
  
 ## The CICD flow is as follows:
-1. #### Push to the master branch.
+1. #### Make a pull request to the main branch.
 2. #### GitHub Actions will run the tests.
 3. #### If tests pass and branch is merged deployment will be triggered.
 4. #### appsettings.json.dec file will be decrypted.
