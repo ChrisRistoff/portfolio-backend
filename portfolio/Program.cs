@@ -157,7 +157,7 @@ if (env == "Development")
 
     await Migrate(app.Services);
     await SeedProd.Seed(builder.Configuration.GetConnectionString(connectionStringName)!);
-    // await SeedAdmin.Seed(builder.Configuration.GetConnectionString(connectionStringName)!, builder.Configuration);
+    await SeedAdmin.Seed(builder.Configuration.GetConnectionString(connectionStringName)!, builder.Configuration);
     app.UseSwagger();
     app.UseSwaggerUI();
 }

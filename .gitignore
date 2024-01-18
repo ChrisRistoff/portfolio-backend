@@ -8,9 +8,6 @@ nohup.out
 */obj
 */bin
 
-portfolio/Seed/AdminData/AdminData.cs
-portfolio/Seed/SeedAdmin.cs
-
 extractSeedDb/node_modules
 extractSeedDb/.env
 extractSeedDb/SeedData/admin_data.json
