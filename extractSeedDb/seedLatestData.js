@@ -45,8 +45,6 @@ async function seedDatabase() {
       const query = `INSERT INTO admin`
     }
 
-    }
-
     pool.end();
   } catch (err) {
     console.error('Error seeding database:', err);
