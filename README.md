@@ -31,7 +31,7 @@ This repository contains the backend code for a portfolio website. It's designed
 ```json
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Server=<host>;Port=<port>;Database=portfolio;User Id=postgres;Password=password;"
+    "DefaultConnection": "Server=<host>;Port=<port>;Database=<database_name>;User Id=<usernamme>;Password=<password>;"
   },
   "Jwt": {
     "Key": "<secret-key>",
