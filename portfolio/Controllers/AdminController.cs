@@ -11,7 +11,7 @@ namespace portfolio.Controllers;
 public class AdminController(AdminRepository adminRepository, AuthService authService) : ControllerBase
 {
 
-    [HttpPost("api/login-admin")]
+    [HttpPost("apis/login-admin")]
     public async Task<ActionResult<LoginResponseDto>> LoginAdmin(LoginAdminDto loginAdminDto)
     {
         try
@@ -62,7 +62,7 @@ public class AdminController(AdminRepository adminRepository, AuthService authSe
         }
     }
 
-    [HttpGet("api/test-auth")]
+    [HttpGet("apis/test-auth")]
     [Authorize]
     public async Task<IActionResult> TestAuth()
     {

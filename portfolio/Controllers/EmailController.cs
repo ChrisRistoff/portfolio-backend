@@ -7,7 +7,7 @@ namespace portfolio.Controllers
     [ApiController]
     public class MailController(EmailService emailService) : ControllerBase
     {
-        [HttpPost("api/send-email")]
+        [HttpPost("apis/send-email")]
         public async Task<IActionResult> SendEmail(EmailDto emailDto)
         {
             try

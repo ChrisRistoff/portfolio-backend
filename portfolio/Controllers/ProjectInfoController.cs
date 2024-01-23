@@ -8,7 +8,7 @@ namespace portfolio.Controllers;
 [ApiController]
 public class ProjectInfoController(ProjectInfoRepository projectInfoRepository) : ControllerBase
 {
-    [HttpGet("api/project-info")]
+    [HttpGet("apis/project-info")]
     public async Task<ActionResult<IEnumerable<ProjectInfoModel>>> GetProjectsInfo(string? projectType)
     {
         try
@@ -22,7 +22,7 @@ public class ProjectInfoController(ProjectInfoRepository projectInfoRepository) 
         }
     }
 
-    [HttpPost("api/project-info")]
+    [HttpPost("apis/project-info")]
     [Authorize]
     public async Task<ActionResult<ProjectInfoModel>> CreateProjectInfo(CreateProjectDto projectInfo)
     {
@@ -37,7 +37,7 @@ public class ProjectInfoController(ProjectInfoRepository projectInfoRepository) 
         }
     }
 
-    [HttpGet("api/project-info/{id}")]
+    [HttpGet("apis/project-info/{id}")]
     public async Task<ActionResult<ProjectInfoModel>> GetProjectById(int id)
     {
         try
@@ -57,7 +57,7 @@ public class ProjectInfoController(ProjectInfoRepository projectInfoRepository) 
         }
     }
 
-    [HttpPatch("api/project-info/{id}")]
+    [HttpPatch("apis/project-info/{id}")]
     [Authorize]
     public async Task<ActionResult<ProjectInfoModel>> UpdateProjectInfo(int id, UpdateProjectDto projectInfo)
     {
@@ -78,7 +78,7 @@ public class ProjectInfoController(ProjectInfoRepository projectInfoRepository) 
         }
     }
 
-    [HttpDelete("api/project-info/{id}")]
+    [HttpDelete("apis/project-info/{id}")]
     [Authorize]
     public async Task<ActionResult<ProjectInfoModel>> DeleteProjectInfo(int id)
     {

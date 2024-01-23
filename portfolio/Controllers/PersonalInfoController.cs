@@ -9,7 +9,7 @@ namespace portfolio.Controllers;
 [ApiController]
 public class PersonalInfoController(PersonalInfoRepository personalInfoRepository, StorageService storageService) : ControllerBase
 {
-    [HttpGet("api/personal-info")]
+    [HttpGet("apis/personal-info")]
     public async Task<ActionResult<PersonalInfoModel>> GetPersonalInfo()
     {
         try
@@ -23,7 +23,7 @@ public class PersonalInfoController(PersonalInfoRepository personalInfoRepositor
         }
     }
 
-    [HttpPatch("api/personal-info/title")]
+    [HttpPatch("apis/personal-info/title")]
     [Authorize]
     public async Task<IActionResult> UpdateTitle(UpdateTitleModel model)
     {
@@ -38,7 +38,7 @@ public class PersonalInfoController(PersonalInfoRepository personalInfoRepositor
         }
     }
 
-    [HttpPatch("api/personal-info/bio")]
+    [HttpPatch("apis/personal-info/bio")]
     [Authorize]
     public async Task<IActionResult> UpdateBio(UpdateBioModel model)
     {
@@ -53,7 +53,7 @@ public class PersonalInfoController(PersonalInfoRepository personalInfoRepositor
         }
     }
 
-    [HttpPatch("api/personal-info/image")]
+    [HttpPatch("apis/personal-info/image")]
     [Authorize]
     public async Task<IActionResult> UploadImage(IFormFile file)
     {
