@@ -4,7 +4,7 @@ using FluentMigrator;
 namespace portfolio.Migrations;
 
 [Migration(3)]
-public class Admin: Migration
+public class AdminTable: Migration
 {
     public override void Up()
     {

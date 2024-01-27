@@ -1,11 +1,12 @@
 using MailKit.Net.Smtp;
 using Microsoft.Extensions.Options;
 using MimeKit;
+using portfolio.Interfaces;
 using portfolio.Models;
 
 namespace portfolio.Services;
 
-public class EmailService(IOptions<EmailSettings> emailSettings)
+public class EmailService(IOptions<EmailSettings> emailSettings) : IEmailService
 {
     private readonly EmailSettings _emailSettings = emailSettings.Value;
 

@@ -1,8 +1,8 @@
 using Dapper;
 using Npgsql;
-using portfolio.Auth;
 using portfolio.Models;
 using portfolio.Interfaces;
+using portfolio.Services;
 
 namespace portfolio.Repositories;
 

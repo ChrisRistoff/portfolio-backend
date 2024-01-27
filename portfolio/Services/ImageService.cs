@@ -1,17 +1,12 @@
 using Firebase.Storage;
+using portfolio.Interfaces;
 
-namespace portfolio.Storage;
+namespace portfolio.Services;
 
-public class StorageService
+public class StorageService(IConfiguration configuration) : IStorageService
 {
-    private readonly string? _bucket;
-    private readonly string? _apiKey;
-
-    public StorageService(IConfiguration configuration)
-    {
-        _bucket = configuration["Firebase:StorageBucket"];
-        _apiKey = configuration["Firebase:ApiKey"];
-    }
+    private readonly string? _bucket = configuration["Firebase:StorageBucket"];
+    private readonly string? _apiKey = configuration["Firebase:ApiKey"];
 
     public async Task<string> UploadFileAsync(Stream fileStream, string fileName)
     {

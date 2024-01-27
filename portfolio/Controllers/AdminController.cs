@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using portfolio.Auth;
 using portfolio.Models;
 using portfolio.Repositories;
+using portfolio.Services;
 
 namespace portfolio.Controllers;
 

@@ -1,8 +1,8 @@
 using System.Text;
 using Dapper;
 using Npgsql;
-using portfolio.Auth;
 using portfolio.Models;
+using portfolio.Services;
 
 namespace portfolio.Seed;
 
