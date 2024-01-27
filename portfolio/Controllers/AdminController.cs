@@ -66,6 +66,7 @@ public class AdminController(AdminRepository adminRepository, AuthService authSe
     [Authorize]
     public async Task<IActionResult> TestAuth()
     {
+        await Task.Delay(0);
         return Ok("You are authorized");
     }
 }

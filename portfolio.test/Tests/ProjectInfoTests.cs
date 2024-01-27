@@ -14,7 +14,7 @@ public class ProjectInfoTests
     [Fact]
     public async Task GetProjectInfo()
     {
-        var response = await _client.GetAsync("/api/project-info");
+        var response = await _client.GetAsync("/apis/project-info");
         response.EnsureSuccessStatusCode();
         var responseString = await response.Content.ReadAsStringAsync();
         var personalInfo = JsonConvert.DeserializeObject<ProjectInfoModel[]>(responseString);
@@ -46,7 +46,7 @@ public class ProjectInfoTests
             Password = "test"
         };
 
-        var response = await _client.PostAsync("/api/login-admin", new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json"));
+        var response = await _client.PostAsync("/apis/login-admin", new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json"));
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
@@ -67,7 +67,7 @@ public class ProjectInfoTests
             Type = "test type 3"
         };
 
-        var response2 = await _client.PostAsync("/api/project-info", new StringContent(JsonConvert.SerializeObject(project), Encoding.UTF8, "application/json"));
+        var response2 = await _client.PostAsync("/apis/project-info", new StringContent(JsonConvert.SerializeObject(project), Encoding.UTF8, "application/json"));
 
         response2.EnsureSuccessStatusCode();
 
@@ -88,7 +88,7 @@ public class ProjectInfoTests
     [Fact]
     public async Task GetProjectById_ShouldSucceed()
     {
-        var response = await _client.GetAsync("/api/project-info/1");
+        var response = await _client.GetAsync("/apis/project-info/1");
         var responseString = await response.Content.ReadAsStringAsync();
         var personalInfo = JsonConvert.DeserializeObject<ProjectInfoModel>(responseString);
 
@@ -105,7 +105,7 @@ public class ProjectInfoTests
     [Fact]
     public async Task GetProjectById_ShouldFail()
     {
-        var response = await _client.GetAsync("/api/project-info/100");
+        var response = await _client.GetAsync("/apis/project-info/100");
         await response.Content.ReadAsStringAsync();
 
         Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
@@ -120,7 +120,7 @@ public class ProjectInfoTests
             Password = "test"
         };
 
-        var response = await _client.PostAsync("/api/login-admin", new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json"));
+        var response = await _client.PostAsync("/apis/login-admin", new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json"));
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
@@ -141,7 +141,7 @@ public class ProjectInfoTests
             Type = "test type 5"
         };
 
-        var response2 = await _client.PatchAsync("/api/project-info/3", new StringContent(JsonConvert.SerializeObject(project), Encoding.UTF8, "application/json"));
+        var response2 = await _client.PatchAsync("/apis/project-info/3", new StringContent(JsonConvert.SerializeObject(project), Encoding.UTF8, "application/json"));
 
         response2.EnsureSuccessStatusCode();
 
@@ -168,7 +168,7 @@ public class ProjectInfoTests
             Password = "test"
         };
 
-        var response = await _client.PostAsync("/api/login-admin", new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json"));
+        var response = await _client.PostAsync("/apis/login-admin", new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json"));
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
@@ -189,7 +189,7 @@ public class ProjectInfoTests
             Type = "test type 5"
         };
 
-        var response2 = await _client.PatchAsync("/api/project-info/100", new StringContent(JsonConvert.SerializeObject(project), Encoding.UTF8, "application/json"));
+        var response2 = await _client.PatchAsync("/apis/project-info/100", new StringContent(JsonConvert.SerializeObject(project), Encoding.UTF8, "application/json"));
 
         Assert.Equal(HttpStatusCode.NotFound, response2.StatusCode);
     }
@@ -203,7 +203,7 @@ public class ProjectInfoTests
             Password = "test"
         };
 
-        var response = await _client.PostAsync("/api/login-admin", new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json"));
+        var response = await _client.PostAsync("/apis/login-admin", new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json"));
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
@@ -211,11 +211,11 @@ public class ProjectInfoTests
         var token = JsonConvert.DeserializeObject<LoginResponseDto>(responseString);
         _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token!.Token);
 
-        var responseDelete = await _client.DeleteAsync("/api/project-info/4");
+        var responseDelete = await _client.DeleteAsync("/apis/project-info/4");
 
         Assert.Equal(HttpStatusCode.NoContent, responseDelete.StatusCode);
 
-        var responseGetDeletedArticle = await _client.GetAsync("/api/project-info/4");
+        var responseGetDeletedArticle = await _client.GetAsync("/apis/project-info/4");
         Assert.Equal(HttpStatusCode.NotFound, responseGetDeletedArticle.StatusCode);
     }
 
@@ -228,7 +228,7 @@ public class ProjectInfoTests
             Password = "test"
         };
 
-        var response = await _client.PostAsync("/api/login-admin", new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json"));
+        var response = await _client.PostAsync("/apis/login-admin", new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json"));
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
@@ -236,7 +236,7 @@ public class ProjectInfoTests
         var token = JsonConvert.DeserializeObject<LoginResponseDto>(responseString);
         _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token!.Token);
 
-        var responseDelete = await _client.DeleteAsync("/api/project-info/100");
+        var responseDelete = await _client.DeleteAsync("/apis/project-info/100");
 
         Assert.Equal(HttpStatusCode.NotFound, responseDelete.StatusCode);
     }

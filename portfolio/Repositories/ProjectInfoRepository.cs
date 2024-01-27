@@ -2,30 +2,30 @@ using System.Text;
 using Dapper;
 using Npgsql;
 using Org.BouncyCastle.Asn1.X509.Qualified;
+using portfolio.Interfaces;
 using portfolio.Models;
 
 namespace portfolio.Repositories;
 
-public class ProjectInfoRepository
+public class ProjectInfoRepository : IProjectInfo
 {
     private readonly string? _connectionString;
 
     public ProjectInfoRepository(IConfiguration config)
     {
-        var config1 = config;
         string? env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
         if (env == "Testing")
         {
-            _connectionString = config1.GetConnectionString("TestConnection");
+            _connectionString = config.GetConnectionString("TestConnection");
         }
         if (env == "Development")
         {
-            _connectionString = config1.GetConnectionString("DefaultConnection");
+            _connectionString = config.GetConnectionString("DefaultConnection");
         }
         if (env == "Production")
         {
-            _connectionString = config1.GetConnectionString("ProductionConnection");
+            _connectionString = config.GetConnectionString("ProductionConnection");
         }
     }
 
@@ -67,7 +67,7 @@ public class ProjectInfoRepository
         return projects;
     }
 
-    public async Task<ProjectInfoModel?> CreateNewProject(CreateProjectDto project)
+    public async Task<ProjectInfoModel> CreateNewProject(CreateProjectDto project)
     {
         await using var connection = new NpgsqlConnection(_connectionString);
 
@@ -120,7 +120,7 @@ public class ProjectInfoRepository
         };
     }
 
-    public async Task<ProjectInfoModel?> UpdateProject(int projectId, UpdateProjectDto project)
+    public async Task<ProjectInfoModel> UpdateProject(int projectId, UpdateProjectDto project)
     {
         await using var connection = new NpgsqlConnection(_connectionString);
 
@@ -130,7 +130,7 @@ public class ProjectInfoRepository
 
         if (projectToUpdate == null)
         {
-            return null;
+            return null!;
         }
 
         DynamicParameters parameters = new DynamicParameters(project);
@@ -153,7 +153,7 @@ public class ProjectInfoRepository
 
         return new ProjectInfoModel
         {
-            Id = result.id,
+            Id = result!.id,
             Name = result.name,
             Tagline = result.tagline,
             Description = result.description,

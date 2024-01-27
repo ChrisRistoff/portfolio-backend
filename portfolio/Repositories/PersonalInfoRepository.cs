@@ -1,32 +1,31 @@
 using Dapper;
 using Npgsql;
+using portfolio.Interfaces;
 using portfolio.Models;
 
 namespace portfolio.Repositories;
 
-public class PersonalInfoRepository
+public class PersonalInfoRepository : IPersonalInfo
 {
-    private readonly IConfiguration _config;
     private readonly string? _connectionString;
 
     public PersonalInfoRepository(IConfiguration config)
     {
-        _config = config;
         string env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
 
         if (env == "Development")
         {
-            _connectionString = _config.GetConnectionString("DefaultConnection");
+            _connectionString = config.GetConnectionString("DefaultConnection");
         }
 
         if (env == "Testing")
         {
-            _connectionString = _config.GetConnectionString("TestConnection");
+            _connectionString = config.GetConnectionString("TestConnection");
         }
 
         if (env == "Production")
         {
-            _connectionString = _config.GetConnectionString("ProductionConnection");
+            _connectionString = config.GetConnectionString("ProductionConnection");
         }
     }
 
