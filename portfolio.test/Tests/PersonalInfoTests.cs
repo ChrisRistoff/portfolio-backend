@@ -13,7 +13,7 @@ public class PersonalInfoTests
     [Fact]
     public async Task GetPersonalInfo()
     {
-        var response = await _client.GetAsync("/api/personal-info");
+        var response = await _client.GetAsync("/apis/personal-info");
         response.EnsureSuccessStatusCode();
         var responseString = await response.Content.ReadAsStringAsync();
         var personalInfo = JsonConvert.DeserializeObject<PersonalInfoModel>(responseString);
@@ -36,7 +36,7 @@ public class PersonalInfoTests
         // login
         var loginContent = new StringContent(JsonConvert.SerializeObject(loginModel), Encoding.UTF8, "application/json");
 
-        var loginResponse = await _client.PostAsync("/api/login-admin", loginContent);
+        var loginResponse = await _client.PostAsync("/apis/login-admin", loginContent);
         loginResponse.EnsureSuccessStatusCode();
         var loginResponseString = await loginResponse.Content.ReadAsStringAsync();
         var loginResponseDto = JsonConvert.DeserializeObject<LoginResponseDto>(loginResponseString);
@@ -46,7 +46,7 @@ public class PersonalInfoTests
 
         var model = new UpdateTitleModel { Title = "test title" };
         var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
-        var response = await _client.PatchAsync("/api/personal-info/title", content);
+        var response = await _client.PatchAsync("/apis/personal-info/title", content);
         response.EnsureSuccessStatusCode();
         var responseString = await response.Content.ReadAsStringAsync();
         var personalInfo = JsonConvert.DeserializeObject<PersonalInfoModel>(responseString);
@@ -70,7 +70,7 @@ public class PersonalInfoTests
         // login
         var loginContent = new StringContent(JsonConvert.SerializeObject(loginModel), Encoding.UTF8, "application/json");
 
-        var loginResponse = await _client.PostAsync("/api/login-admin", loginContent);
+        var loginResponse = await _client.PostAsync("/apis/login-admin", loginContent);
         loginResponse.EnsureSuccessStatusCode();
         var loginResponseString = await loginResponse.Content.ReadAsStringAsync();
         var loginResponseDto = JsonConvert.DeserializeObject<LoginResponseDto>(loginResponseString);
@@ -80,7 +80,7 @@ public class PersonalInfoTests
 
         var model = new UpdateBioModel { Bio = "test bio" };
         var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
-        var response = await _client.PatchAsync("/api/personal-info/bio", content);
+        var response = await _client.PatchAsync("/apis/personal-info/bio", content);
         response.EnsureSuccessStatusCode();
         var responseString = await response.Content.ReadAsStringAsync();
         var personalInfo = JsonConvert.DeserializeObject<PersonalInfoModel>(responseString);

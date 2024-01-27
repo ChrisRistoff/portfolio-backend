@@ -13,7 +13,7 @@ public class TestAuth
     public async Task TestProtectedEndpoint()
     {
         // Perform login
-        var loginResponse = await _client.PostAsync("/api/login-admin", new StringContent(
+        var loginResponse = await _client.PostAsync("/apis/login-admin", new StringContent(
             JsonConvert.SerializeObject(new LoginAdminDto { Username = "test", Password = "test" }),
             Encoding.UTF8, "application/json"));
 
@@ -25,7 +25,7 @@ public class TestAuth
 
         _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", user!.Token);
 
-        var response = await _client.GetAsync("/api/test-auth");
+        var response = await _client.GetAsync("/apis/test-auth");
 
         Console.WriteLine(response.StatusCode);
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);

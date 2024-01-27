@@ -2,35 +2,34 @@ using Dapper;
 using Npgsql;
 using portfolio.Auth;
 using portfolio.Models;
+using portfolio.Interfaces;
 
 namespace portfolio.Repositories;
 
-public class AdminRepository
+public class AdminRepository : IAdminRepository
 {
-    private readonly IConfiguration _config;
     private readonly AuthService _authService;
     private readonly string? _connectionString;
 
     public AdminRepository(IConfiguration config, AuthService authService)
     {
-        _config = config;
         _authService = authService;
 
         string env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
 
         if (env == "Development")
         {
-            _connectionString = _config.GetConnectionString("DefaultConnection");
+            _connectionString = config.GetConnectionString("DefaultConnection");
         }
 
         if (env == "Testing")
         {
-            _connectionString = _config.GetConnectionString("TestConnection");
+            _connectionString = config.GetConnectionString("TestConnection");
         }
 
         if (env == "Production")
         {
-            _connectionString = _config.GetConnectionString("ProductionConnection");
+            _connectionString = config.GetConnectionString("ProductionConnection");
         }
     }
 
