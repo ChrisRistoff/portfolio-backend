@@ -3,12 +3,10 @@ using FluentMigrator.Runner;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using portfolio.Auth;
 using portfolio.Models;
 using portfolio.Repositories;
 using portfolio.Seed;
 using portfolio.Services;
-using portfolio.Storage;
 
 var builder = WebApplication.CreateBuilder(args);
 

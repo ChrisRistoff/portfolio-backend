@@ -2,27 +2,21 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
+using portfolio.Interfaces;
 using portfolio.Models;
 
-namespace portfolio.Auth;
+namespace portfolio.Services;
 
-public class AuthService
+public class AuthService(IConfiguration configuration) : IAuthService
 {
-    private readonly IConfiguration _configuration;
-
-    public AuthService(IConfiguration configuration)
-    {
-        _configuration = configuration;
-    }
-
     public string GenerateJwtToken(Admin user)
     {
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"] ?? string.Empty));
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"] ?? string.Empty));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
         var token = new JwtSecurityToken(
-            _configuration["Jwt:Issuer"],
-            _configuration["Jwt:Audience"],
+            configuration["Jwt:Issuer"],
+            configuration["Jwt:Audience"],
             expires: DateTime.Now.AddMinutes(30),
             signingCredentials: creds
         );
