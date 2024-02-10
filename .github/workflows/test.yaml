@@ -50,10 +50,10 @@ jobs:
         run: echo "JWT__Key=${{ secrets.JWT_KEY }}" >> $GITHUB_ENV
 
       - name: Set up JWT Issuer
-        run: echo "JWT__Issuer=portfolio" >> $GITHUB_ENV
+        run: echo "JWT__Issuer=construction" >> $GITHUB_ENV
 
       - name: Set up JWT Audience
-        run: echo "JWT__Audience=portfolio" >> $GITHUB_ENV
+        run: echo "JWT__Audience=construction" >> $GITHUB_ENV
 
       - name: Test
         run: dotnet test

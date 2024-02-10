@@ -42,7 +42,7 @@ public class ProjectInfoRepository : IProjectInfo
             parameters.Add("ProjectType", projectType);
         }
 
-        sql.Append(" ORDER BY id ASC");
+        sql.Append(" ORDER BY id DESC");
 
         var results = await connection.QueryAsync<dynamic>(sql.ToString(), parameters);
         var projects = new List<ProjectInfoModel>();
