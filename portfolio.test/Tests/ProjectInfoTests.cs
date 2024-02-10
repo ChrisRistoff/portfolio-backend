@@ -20,21 +20,21 @@ public class ProjectInfoTests
         var personalInfo = JsonConvert.DeserializeObject<ProjectInfoModel[]>(responseString);
 
         Assert.IsType<ProjectInfoModel[]>(personalInfo);
-        Assert.Equal("test project", personalInfo![0].Name);
-        Assert.Equal("test tagline", personalInfo[0].Tagline);
-        Assert.Equal("test description", personalInfo[0].Description);
-        Assert.Equal("test image", personalInfo[0].Image);
-        Assert.Equal("test repo", personalInfo[0].Repo);
-        Assert.Equal("test link", personalInfo[0].Link);
-        Assert.Equal(["test", "test", "test"], personalInfo[0].TechStack);
+        Assert.Equal("test project", personalInfo![3].Name);
+        Assert.Equal("test tagline", personalInfo[3].Tagline);
+        Assert.Equal("test description", personalInfo[3].Description);
+        Assert.Equal("test image", personalInfo[3].Image);
+        Assert.Equal("test repo", personalInfo[3].Repo);
+        Assert.Equal("test link", personalInfo[3].Link);
+        Assert.Equal(["test", "test", "test"], personalInfo[3].TechStack);
 
-        Assert.Equal("test project 2", personalInfo![1].Name);
-        Assert.Equal("test tagline 2", personalInfo[1].Tagline);
-        Assert.Equal("test description 2", personalInfo[1].Description);
-        Assert.Equal("test image 2", personalInfo[1].Image);
-        Assert.Equal("test repo 2", personalInfo[1].Repo);
-        Assert.Equal("test link 2", personalInfo[1].Link);
-        Assert.Equal(["test 2", "test 2", "test 2"], personalInfo[1].TechStack);
+        Assert.Equal("test project 2", personalInfo![2].Name);
+        Assert.Equal("test tagline 2", personalInfo[2].Tagline);
+        Assert.Equal("test description 2", personalInfo[2].Description);
+        Assert.Equal("test image 2", personalInfo[2].Image);
+        Assert.Equal("test repo 2", personalInfo[2].Repo);
+        Assert.Equal("test link 2", personalInfo[2].Link);
+        Assert.Equal(["test 2", "test 2", "test 2"], personalInfo[2].TechStack);
     }
 
     [Fact]
@@ -57,14 +57,14 @@ public class ProjectInfoTests
         var project = new CreateProjectDto
         {
             Id = 3,
-            Name = "test project 3",
-            Tagline = "test tagline 3",
-            Description = "test description 3",
-            Image = "test image 3",
-            Repo = "test repo 3",
-            Link = "test link 3",
-            TechStack = ["test 3", "test 3", "test 3"],
-            Type = "test type 3"
+            Name = "test project 5",
+            Tagline = "test tagline 5",
+            Description = "test description 5",
+            Image = "test image 5",
+            Repo = "test repo 5",
+            Link = "test link 5",
+            TechStack = ["test 5", "test 5", "test 5"],
+            Type = "test type 5"
         };
 
         var response2 = await _client.PostAsync("/apis/project-info", new StringContent(JsonConvert.SerializeObject(project), Encoding.UTF8, "application/json"));

@@ -41,10 +41,11 @@ public class SeedTest
         // seed projects table
         foreach (ProjectObject project in projectData)
         {
+
             StringBuilder sql = new StringBuilder();
             sql.Append("INSERT INTO projects (id, name, tagline, description, image, repo, link, tech_stack, project_type) VALUES (");
-            sql.Append("@Id, @Name, @Tagline, @Description, @Image, @Repo, @Link, @TechStack, @Type");
-            sql.Append(")");
+            sql.Append("@Id, @Name, @Tagline, @Description, @Image, @Repo, @Link, @TechStack, @Type)");
+
             await connection.ExecuteAsync(sql.ToString(),
                 new
                 {
