@@ -5,7 +5,7 @@
     "tagline": "My personal website",
     "description": "A portfolio project I created to easily update project links without the need to revise my entire CV. As I'm still relatively new to deployment and CI/CD pipelines, this approach allows for flexibility and efficiency in managing project references.\n\nTo enhance the manageability of my portfolio project, I implemented a dedicated admin panel, designed to streamline the process of updating and managing project references and personal information.\n\nTo ensure my seed data remains up to date, I've set up a Node.js project with two scripts: one for seeding the production database and another for extracting the latest data.",
     "image": "null",
-    "repo": "https://www.github.com/krasenHristov/portfolio-backend",
+    "repo": "https://www.github.com/ChrisRistoff/portfolio-backend",
     "link": "https://krasen.site/swagger/index.html",
     "tech_stack": [
       "C#",
@@ -51,7 +51,7 @@
     "tagline": "My personal website",
     "description": "The frontend of my portfolio project has a simple and elegant design that helps me display my projects clearly and without unnecessary complexity. I created this space primarily to present my work and make it easy to update when necessary. This way, I can keep my project references current without having to make extensive changes to my CV. \n\n The admin panel currently is accessible but requires auth so information can't be changed by anyone but me.",
     "image": "null",
-    "repo": "https://www.github.com/krasenHristov/portfolio-frontend",
+    "repo": "https://www.github.com/ChrisRistoff/portfolio-frontend",
     "link": "https://krasen.site",
     "tech_stack": [
       "Typescript",
@@ -71,7 +71,7 @@
     "tagline": "Group project, reference Actions and Commits to get the full picture",
     "description": "A Recipe website but with a twist, users are not only able to create their recipes,they can also Fork(copy) other users recipes and make their own version of it. There is support for 1-5 star reviews, comments, search, featured recipes using the TSVECTOR table for the search, likes/dislikes on comments and much more.",
     "image": "null",
-    "repo": "https://www.github.com/krasenHristov/RecipeHub",
+    "repo": "https://www.github.com/ChrisRistoff/RecipeHub",
     "link": "http://ec2-18-130-212-68.eu-west-2.compute.amazonaws.com:5000/swagger/index.html",
     "tech_stack": [
       "C#",
@@ -94,7 +94,7 @@
     "tagline": "Simple recipe app",
     "description": "I created the Simple Recipe App as a learning exercise mostly by following a tutorial. This project allowed me to gain hands-on experience with Python, Django, PostgreSQL, Docker, Github Actions, and AWS deployment. While the initial implementation was based on the tutorial, I also took the opportunity to customize and extend the project to further enhance my understanding of these technologies.",
     "image": "null",
-    "repo": "https://github.com/krasenHristov/django",
+    "repo": "https://github.com/ChrisRistoff/django",
     "link": "http://ec2-54-90-144-115.compute-1.amazonaws.com/api/docs/",
     "tech_stack": [
       "Python",
@@ -112,7 +112,7 @@
     "tagline": "A Reddit-like news site",
     "description": "NC-News Backend is a Reddit-like news site where I leveraged technologies beyond my bootcamp curriculum. I not only completed core tasks promptly but also implemented features such as authentication, CICD pipeline, AWS deployment, Docker containerization, TypeScript migration, interactive Swagger documentation, and more. ",
     "image": "null",
-    "repo": "https://github.com/krasenHristov/nc-news",
+    "repo": "https://github.com/ChrisRistoff/nc-news",
     "link": "https://krasen.site/api/docs/",
     "tech_stack": [
       "Node",
@@ -136,7 +136,7 @@
     "tagline": "Frontend of the NC-News project",
     "description": "The NC-News Frontend complements the backend, providing a functional user interface for the NC-News project. My primary goal was to gain a deep understanding of frontend-backend integration rather than focusing on aesthetics. While it may not be the most visually appealing, it serves as a valuable learning experience for improving my backend development skills.",
     "image": "null",
-    "repo": "https://github.com/krasenHristov/nc-news-frontend",
+    "repo": "https://github.com/ChrisRistoff/nc-news-frontend",
     "link": "https://krasen.site/news",
     "tech_stack": [
       "React",
@@ -155,7 +155,7 @@
     "tagline": "Currently work in progress",
     "description": "As the tagline says, currently work in progress, it's what I lacked in my job as an assistant manager, this one is going a bit slower than the rest of my projects. I plan to have microservices for the main site, auth and the management tool, services will be on the same host so I won't get the full benefit but I'm doing it mainly for practice. Tests for this one are also done inside containers and using compose for the test database container.\n\nThe site will allow for staff management, expenses and profit management, projects will be added to the main site once marked as completed, I plan for invoice generation and sending it as a pdf to a given email.\n\nAs of right now I'm still mostly planning and building the basic features of the main site.",
     "image": "",
-    "repo": "https://github.com/krasenHristov/Construction-Backend",
+    "repo": "https://github.com/ChrisRistoff/Construction-Backend",
     "link": "http://4.234.160.181:8080/swagger/index.html",
     "tech_stack": [
       ".NET 8 Core",
