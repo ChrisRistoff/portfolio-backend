@@ -1,5 +1,62 @@
 [
   {
+    "id": 11,
+    "name": "Data Structures",
+    "tagline": "Data structures and Algos",
+    "description": "This project represents a comprehensive exploration into core data structures and algorithms. It encompasses the implementation and practical application of fundamental data structures including Linked Lists, Doubly Linked Lists, Hash Maps, and Hash Sets, along with a Binary Tree. Additionally, the project delves into algorithmic techniques, featuring implementations of Binary Search and Bubble Sort. Each component was created to deepen my understanding of computer science principles, showcasing my ability to both grasp and apply complex concepts in a real-world context.",
+    "image": "",
+    "repo": "https://github.com/ChrisRistoff/justSTuff",
+    "link": "",
+    "tech_stack": [
+      "JavaScript",
+      "TypeScript",
+      "Jest"
+    ],
+    "project_type": "DSA"
+  },
+  {
+    "id": 12,
+    "name": "Collection of CLI apps",
+    "tagline": "CLI apps created using Python.",
+    "description": "In the early stages of my programming journey, I embarked on creating a suite of command-line interface (CLI) applications, focusing on interactive games and challenges. This collection features classic games such as Black Jack, Higher-Lower, Rock Paper Scissors, Hangman, and more, each designed to provide a fun and engaging way to interact with the fundamentals of coding.\n\nAmong these projects is my first attempt at solving the Knight's Tour puzzle, tackled just two weeks into learning programming. This endeavor, although not optimized for efficiency, represents a significant milestone in my coding journey, showcasing my early enthusiasm and willingness to tackle complex problems head-on. While it remains a work in progress, it symbolizes the beginning of my deep dive into the world of algorithms and data structures, setting the foundation for my continuous learning and development in software engineering.",
+    "image": "",
+    "repo": "https://github.com/ChrisRistoff/python_cli_apps",
+    "link": "",
+    "tech_stack": [
+      "Python"
+    ],
+    "project_type": "CLI"
+  },
+  {
+    "id": 13,
+    "name": "Pokemon Game",
+    "tagline": "A terminal pokemon game for 2 players",
+    "description": "A fun pokemon game, you can find instructions how to install and how to play in the repo readme. Some of the rules are missing, I will rewrite them at some point.",
+    "image": "",
+    "repo": "https://github.com/ChrisRistoff/pokemon",
+    "link": "",
+    "tech_stack": [
+      "JavaScript",
+      "Inquirer",
+      "Jest"
+    ],
+    "project_type": "CLI"
+  },
+  {
+    "id": 14,
+    "name": "Advent of Code",
+    "tagline": "AC with JS",
+    "description": "During the bootcamp, I managed to complete all the challenges provided ahead of time, so the mentors tasked me with doing advent of code. This is the repo of the AC challenges I did during the bootcamp. ",
+    "image": "",
+    "repo": "https://github.com/ChrisRistoff/adventOfCode",
+    "link": "",
+    "tech_stack": [
+      "Node",
+      "JavaScript"
+    ],
+    "project_type": "DSA"
+  },
+  {
     "id": 7,
     "name": "Portfolio Backend",
     "tagline": "My personal website",
@@ -24,7 +81,7 @@
       "Nginx",
       "Cloudflare CDN"
     ],
-    "project_type": "Backend"
+    "project_type": "Web App"
   },
   {
     "id": 4,
@@ -43,27 +100,7 @@
       "GithubActions",
       "AWS"
     ],
-    "project_type": "Frontend"
-  },
-  {
-    "id": 6,
-    "name": "Portfolio Frontend",
-    "tagline": "My personal website",
-    "description": "The frontend of my portfolio project has a simple and elegant design that helps me display my projects clearly and without unnecessary complexity. I created this space primarily to present my work and make it easy to update when necessary. This way, I can keep my project references current without having to make extensive changes to my CV. \n\n The admin panel currently is accessible but requires auth so information can't be changed by anyone but me.",
-    "image": "null",
-    "repo": "https://www.github.com/ChrisRistoff/portfolio-frontend",
-    "link": "https://krasen.site",
-    "tech_stack": [
-      "Typescript",
-      "React",
-      "Vite",
-      "Docker",
-      "GithubActions",
-      "AWS",
-      "Nginx",
-      "Cloudflare CDN"
-    ],
-    "project_type": "Frontend"
+    "project_type": "Web App"
   },
   {
     "id": 5,
@@ -86,11 +123,11 @@
       "Firebase Cloud Storage",
       "Jira"
     ],
-    "project_type": "Backend"
+    "project_type": "Web App"
   },
   {
     "id": 1,
-    "name": "Simple Recipe App",
+    "name": "Simple Recipe App Backend",
     "tagline": "Simple recipe app",
     "description": "I created the Simple Recipe App as a learning exercise mostly by following a tutorial. This project allowed me to gain hands-on experience with Python, Django, PostgreSQL, Docker, Github Actions, and AWS deployment. While the initial implementation was based on the tutorial, I also took the opportunity to customize and extend the project to further enhance my understanding of these technologies.",
     "image": "null",
@@ -104,7 +141,7 @@
       "GithubActions",
       "AWS"
     ],
-    "project_type": "Backend"
+    "project_type": "Web App"
   },
   {
     "id": 3,
@@ -128,7 +165,7 @@
       "Nginx",
       "Cloudflare CDN"
     ],
-    "project_type": "Backend"
+    "project_type": "Web App"
   },
   {
     "id": 2,
@@ -147,7 +184,7 @@
       "Nginx",
       "Cloudflare CDN"
     ],
-    "project_type": "Frontend"
+    "project_type": "Web App"
   },
   {
     "id": 8,
@@ -158,6 +195,7 @@
     "repo": "https://github.com/ChrisRistoff/Construction-Backend",
     "link": "http://4.234.160.181:8080/swagger/index.html",
     "tech_stack": [
+      "C#",
       ".NET 8 Core",
       "Entity Framework",
       "Dapper",
@@ -167,6 +205,54 @@
       "Docker compose",
       "GitHub Actions"
     ],
-    "project_type": "Backend"
+    "project_type": "Web App"
+  },
+  {
+    "id": 9,
+    "name": "Leet Code with C#",
+    "tagline": "Leet Code, Advent of Code, Some data structures",
+    "description": "dotNetEverything, a comprehensive repository where I explore and solve various programming challenges and concepts using C#. This project serves as a personal journey through different aspects of programming, from data structures and algorithms to solving real-world problems.",
+    "image": "",
+    "repo": "https://github.com/ChrisRistoff/dotNetEverything",
+    "link": "",
+    "tech_stack": [
+      "C#",
+      ".NET",
+      "xUnit"
+    ],
+    "project_type": "DSA"
+  },
+  {
+    "id": 10,
+    "name": "Leet Code with TypeScript",
+    "tagline": "A collection of easy and mid leet code problems solved using typescript.",
+    "description": "As I delved deeper into the world of data structures and algorithms through various courses, I challenged myself with LeetCode problems to apply what I've learned and refine my problem-solving skills. This repository is a testament to that journey, showcasing my solutions and the knowledge I've gained along the way.",
+    "image": "",
+    "repo": "https://github.com/ChrisRistoff/leetCode",
+    "link": "",
+    "tech_stack": [
+      "TypeScript"
+    ],
+    "project_type": "DSA"
+  },
+  {
+    "id": 6,
+    "name": "Portfolio Frontend",
+    "tagline": "My personal website",
+    "description": "The frontend of my portfolio project has a simple and elegant design that helps me display my projects clearly and without unnecessary complexity. I created this space primarily to present my work and make it easy to update when necessary. This way, I can keep my project references current without having to make extensive changes to my CV. \n\n The admin panel left accessible on krasen.site/admin on purpose, please feel free to take a walk around it, it requires authentication so you will not be able to make any changes.",
+    "image": "null",
+    "repo": "https://www.github.com/ChrisRistoff/portfolio-frontend",
+    "link": "https://krasen.site",
+    "tech_stack": [
+      "Typescript",
+      "React",
+      "Vite",
+      "Docker",
+      "GithubActions",
+      "AWS",
+      "Nginx",
+      "Cloudflare CDN"
+    ],
+    "project_type": "Web App"
   }
 ]
