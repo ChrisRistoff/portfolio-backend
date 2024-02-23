@@ -2,6 +2,7 @@ using Dapper;
 using Npgsql;
 using portfolio.Interfaces;
 using portfolio.Models;
+using portfolio.Services;
 
 namespace portfolio.Repositories;
 
@@ -73,6 +74,14 @@ public class PersonalInfoRepository : IPersonalInfo
     public async Task<PersonalInfoModel> UploadImage(string image)
     {
         await using var connection = new NpgsqlConnection(_connectionString);
+
+        var currentImage = await GetPersonalInfo();
+
+        if (currentImage.Image != null)
+        {
+            var storageService = new StorageService(new ConfigurationBuilder().Build());
+            await storageService.DeleteFileAsync(currentImage.Image);
+        }
 
         var sql = @"
             UPDATE personal_info
